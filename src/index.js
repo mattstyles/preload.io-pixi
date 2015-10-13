@@ -18,14 +18,28 @@ class IOError extends Error {
 }
 
 
+/**
+ * Wraps Pixi.Loader for preload.io
+ */
 export default class PixiLoader {
-    constructor( opts ) {
-        this.opts = {}
+    /**
+     * @constructs
+     * @param opts <Object> passed through to Pixi.Loader constructor, defaults as Resource-Loader defaults
+     *   @param baseUrl <String> _''_ base url to look for assets
+     *   @param concurrency <Integer> _10_ max number of concurrent loads to attempt
+     */
+    constructor( opts = { baseUrl: '', concurrency: 10 } ) {
+        this.opts = opts
         this.name = 'pixiLoader'
+        this.match = /jpg$|jpeg$|png$/
 
-        this.loader = new Pixi.loaders.Loader()
+        this.loader = new Pixi.loaders.Loader( this.opts.baseUrl, this.opts.concurrency )
     }
 
+    /**
+     * Promisifies Pixi.Loader
+     * @param opts <Object> configuration about the load event
+     */
     _loadPromise( opts ) {
         return new Promise( ( resolve, reject ) => {
             this.loader
@@ -42,6 +56,12 @@ export default class PixiLoader {
         })
     }
 
+    /**
+     * @async
+     * Loads the resource and emits load events
+     * @param ctx <Object> preload.io context
+     * @param opts <Object> opts used to configure the load event
+     */
     async load( ctx, opts ) {
         let res = null
         try {

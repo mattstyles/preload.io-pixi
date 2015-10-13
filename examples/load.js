@@ -8,7 +8,7 @@ preloader.register( new PixiLoader() )
 
 // preloader.load( 'http://fillmurray.com/100/100?jpg' )
 // preloader.load( 'http://fillmurray.com/200/200?jpg' )
-// preloader.load( './awesome404.jpg' )
+preloader.load( './awesome404.jpg' )
 
 for ( let i = 0; i < 3; i++ ) {
     preloader.load({
