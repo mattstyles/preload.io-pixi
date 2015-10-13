@@ -22,7 +22,6 @@ export default class PixiLoader {
     constructor( opts ) {
         this.opts = {}
         this.name = 'pixiLoader'
-        this.match = /jpg$|jpeg$|png$/
 
         this.loader = new Pixi.loaders.Loader()
     }
@@ -32,19 +31,19 @@ export default class PixiLoader {
             this.loader
                 .add( opts.resource )
                 .load( function( loader, resources ) {
-                    console.log( 'loader', loader )
-                    console.log( 'resources', resources )
+                    let res = resources[ opts.resource ]
+                    if ( res.error ) {
+                        reject( res.error )
+                        return
+                    }
 
-                    resolve( 'something' )
+                    resolve( res )
                 })
-
         })
     }
 
     async load( ctx, opts ) {
-        // @TODO optionally use old school tag loading
         let res = null
-        let blob = null
         try {
             res = await this._loadPromise( opts )
         } catch( err ) {
@@ -58,7 +57,7 @@ export default class PixiLoader {
 
         ctx.emit( EVENTS.LOAD, {
             id: opts.id,
-            status: res.status,
+            status: 200,
             res: res
         })
     }
