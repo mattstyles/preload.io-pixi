@@ -34,11 +34,6 @@ export default class PixiLoader {
         this.match = /jpg$|jpeg$|png$/
 
         this.loader = new Pixi.loaders.Loader( this.opts.baseUrl, this.opts.concurrency )
-
-        this.loader.on( 'error', function( stuff ) {
-            console.log( 'error' )
-            console.log( stuff )
-        } )
     }
 
     /**
