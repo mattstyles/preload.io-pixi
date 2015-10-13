@@ -34,6 +34,11 @@ export default class PixiLoader {
         this.match = /jpg$|jpeg$|png$/
 
         this.loader = new Pixi.loaders.Loader( this.opts.baseUrl, this.opts.concurrency )
+
+        this.loader.on( 'error', function( stuff ) {
+            console.log( 'error' )
+            console.log( stuff )
+        } )
     }
 
     /**
@@ -47,7 +52,13 @@ export default class PixiLoader {
                 .load( function( loader, resources ) {
                     let res = resources[ opts.resource ]
                     if ( res.error ) {
-                        reject( res.error )
+                        // We cant get the error code from Resource-Loader
+                        // so generic to 500 (anything non-200 is probably safe)
+                        reject({
+                            status: 500,
+                            res: res.error,
+                            raw: res
+                        })
                         return
                     }
 
