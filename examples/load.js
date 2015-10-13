@@ -4,7 +4,8 @@ import { EVENTS } from 'preload.io'
 import PixiLoader from '../lib'
 
 let preloader = new Preloader()
-preloader.register( new PixiLoader() )
+let pixiLoader = new PixiLoader()
+preloader.register( pixiLoader )
 
 // preloader.load( 'http://fillmurray.com/100/100?jpg' )
 // preloader.load( 'http://fillmurray.com/200/200?jpg' )
@@ -15,8 +16,9 @@ preloader.load({
 
 for ( let i = 0; i < 3; i++ ) {
     preloader.load({
-        resource: './awesome.jpg?' + ( Math.random() * 10000 ) + '&jpg',
-        id: 'awesome' + i
+        resource: './awesome.jpg?' + ~~( Math.random() * 100000 ) + '&jpg',
+        id: 'awesome' + i,
+        loader: pixiLoader.name
     })
 }
 let start = performance.now()

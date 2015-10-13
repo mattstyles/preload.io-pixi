@@ -84,7 +84,8 @@ export default class PixiLoader {
         ctx.emit( EVENTS.LOAD, {
             id: opts.id,
             status: 200,
-            res: res
+            res: res,
+            texture: res.texture || null
         })
     }
 }
