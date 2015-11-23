@@ -8,7 +8,7 @@
     "build": "babel src --out-dir lib",
     "watch": "babel src --out-dir lib --watch",
     "preexample": "npm run build",
-    "example": "browserify -t babelify examples/load.js --debug > examples/build.js",
+    "example": "browserify -t babelify examples/atlas.js --debug > examples/build.js",
     "pretest": "npm run build",
     "test": "zuul --open --local 8080 -- spec/*.js"
   },

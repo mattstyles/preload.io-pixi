@@ -1,0 +1,41 @@
+{
+	"meta": {
+		"image": "chara.png",
+		"size": {"w":24,"h":24},
+		"scale": "1"
+	},
+	"frames": {
+		"assassin.png":
+		{
+			"frame": {"x":2,"y":2,"w":8,"h":8},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
+			"sourceSize": {"w":8,"h":8}
+		},
+		"crawler.png":
+		{
+			"frame": {"x":14,"y":2,"w":8,"h":8},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
+			"sourceSize": {"w":8,"h":8}
+		},
+		"warrior.png":
+		{
+			"frame": {"x":2,"y":14,"w":8,"h":8},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
+			"sourceSize": {"w":8,"h":8}
+		},
+		"wizard.png":
+		{
+			"frame": {"x":14,"y":14,"w":8,"h":8},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
+			"sourceSize": {"w":8,"h":8}
+		}
+	}
+}
