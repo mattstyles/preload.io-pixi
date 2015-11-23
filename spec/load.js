@@ -6,9 +6,9 @@ import { EVENTS } from 'preload.io'
 import PixiLoader from '../lib'
 
 tape( 'Should expose pixiLoader as the name of the module loader', t => {
-    t.plan( 1 )
+  t.plan( 1 )
 
-    let pixiLoader = new PixiLoader()
+  let pixiLoader = new PixiLoader()
 
-    t.equal( pixiLoader.name, 'pixiLoader' )
+  t.equal( pixiLoader.name, 'pixiLoader' )
 })
