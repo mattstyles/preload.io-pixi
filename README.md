@@ -51,7 +51,7 @@ preloader.load( '/assets/avatar.jpg' )
 
 `PixiLoader` will match on `jpg`, `jpeg` and `png` resources.
 
-This will conflict with [Preload.io-image](https://github.com/mattstyles/preload.io-image) so specify the loader to use if you need to whack images into Pixi and the old fashioned way:
+This will conflict with [Preload.io-image](https://github.com/mattstyles/preload.io-image) so specify the loader to use if you need to whack images into Pixi and you’ve registered `preload.io-image`:
 
 ```js
 let pixiLoader = new PixiLoader()
