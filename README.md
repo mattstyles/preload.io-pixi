@@ -2,9 +2,31 @@
 
 > Preload.io wrapper for [pixi.loader](https://pixijs.github.io/docs/loaders_loader.js.html)
 
-```shell
+
+## Installation
+
+```sh
 npm i -S preload.io-image
 ```
+
+
+## Polyfills
+
+Image requires a few polyfills to work everywhere, to give some flexibility they are not included by default.
+
+```sh
+npm i -S whatwg-fetch regenerator
+```
+
+```js
+import 'regenerator/runtime'
+import 'whatwg-fetch'
+```
+
+`Regenerator` is currently a requirement for the async stuff, but a version is included with `babel-polyfill` so if you’re using that then you’re good to go. Use whichever version of `fetch` you like, if necessary.
+
+There will be a fairly obvious console error logged if these are omitted.
+
 
 ## Getting Started
 
@@ -45,8 +67,8 @@ Pixi.Loader is built on top of [Resource-Loader](https://github.com/englercj/res
 
 ```js
 let pixiLoader = new PixiLoader({
-    baseUrl: '/assets',
-    concurrency: 10
+  baseUrl: '/assets',
+  concurrency: 10
 })
 ```
 
@@ -63,13 +85,12 @@ let preloader = new Preloader()
 preloader.register( new PixiLoader() )
 
 preloader.load({
-    id: 'avatar',
-    resource: '/assets/avatar.jpg'
+  id: 'avatar',
+  resource: '/assets/avatar.jpg'
 })
 
-
 preloader.on( EVENTS.COMPLETE, resources => {
-    let texture = resources.get( 'avatar' ).texture
-    // ... Do stuff with `texture`
+  let texture = resources.get( 'avatar' ).texture
+  // ... Do stuff with `texture`
 })
 ```
