@@ -13,6 +13,8 @@ import PixiLoader from '../lib'
 var WIDTH = window.innerWidth
 var HEIGHT = window.innerHeight
 var stage = new Pixi.Container()
+
+Pixi.SCALE_MODES.DEFAULT = Pixi.SCALE_MODES.NEAREST
 var renderer = new Pixi.autoDetectRenderer( WIDTH, HEIGHT, {
   resolution: window.devicePixelRatio || 1
 })
@@ -46,7 +48,7 @@ preloader.on( EVENTS.LOAD, event => {
 
   Object.keys( event.res.textures ).forEach( id => {
     var tex = event.res.textures[ id ]
-    tex.baseTexture.scaleMode = Pixi.SCALE_MODES.NEAREST
+    // tex.baseTexture.scaleMode = Pixi.SCALE_MODES.NEAREST
     var sprite = new Pixi.Sprite( tex )
     pos[ 0 ] += 48
     sprite.position.set( pos[ 0 ], pos[ 1 ] )
@@ -69,3 +71,6 @@ preloader.on( EVENTS.COMPLETE, res => {
 window.render = function() {
   renderer.render( stage )
 }
+
+window.stage = stage
+window.renderer = renderer
